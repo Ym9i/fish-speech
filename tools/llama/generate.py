@@ -605,35 +605,35 @@ def launch_thread_safe_queue(
     return input_queue
 
 
-@click.command()
-@click.option(
-    "--text",
-    type=str,
-    default="你说的对, 但是原神是一款由米哈游自主研发的开放世界手游.",
-)
-@click.option("--prompt-text", type=str, default=None, multiple=True)
-@click.option(
-    "--prompt-tokens",
-    type=click.Path(path_type=Path, exists=True),
-    default=None,
-    multiple=True,
-)
-@click.option("--num-samples", type=int, default=1)
-@click.option("--max-new-tokens", type=int, default=0)
-@click.option("--top-p", type=float, default=0.7)
-@click.option("--repetition-penalty", type=float, default=1.2)
-@click.option("--temperature", type=float, default=0.7)
-@click.option(
-    "--checkpoint-path",
-    type=click.Path(path_type=Path, exists=True),
-    default="checkpoints/fish-speech-1.4",
-)
-@click.option("--device", type=str, default="cuda")
-@click.option("--compile/--no-compile", default=False)
-@click.option("--seed", type=int, default=42)
-@click.option("--half/--no-half", default=False)
-@click.option("--iterative-prompt/--no-iterative-prompt", default=True)
-@click.option("--chunk-length", type=int, default=100)
+# @click.command()
+# @click.option(
+#     "--text",
+#     type=str,
+#     default="你说的对, 但是原神是一款由米哈游自主研发的开放世界手游.",
+# )
+# @click.option("--prompt-text", type=str, default=None, multiple=True)
+# @click.option(
+#     "--prompt-tokens",
+#     type=click.Path(path_type=Path, exists=True),
+#     default=None,
+#     multiple=True,
+# )
+# @click.option("--num-samples", type=int, default=1)
+# @click.option("--max-new-tokens", type=int, default=0)
+# @click.option("--top-p", type=float, default=0.7)
+# @click.option("--repetition-penalty", type=float, default=1.2)
+# @click.option("--temperature", type=float, default=0.7)
+# @click.option(
+#     "--checkpoint-path",
+#     type=click.Path(path_type=Path, exists=True),
+#     default="checkpoints/fish-speech-1.4",
+# )
+# @click.option("--device", type=str, default="cuda")
+# @click.option("--compile/--no-compile", default=False)
+# @click.option("--seed", type=int, default=42)
+# @click.option("--half/--no-half", default=False)
+# @click.option("--iterative-prompt/--no-iterative-prompt", default=True)
+# @click.option("--chunk-length", type=int, default=100)
 def main(
     text: str,
     prompt_text: Optional[list[str]],
