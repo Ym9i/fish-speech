@@ -45,7 +45,7 @@ def run_1(task_id: str, input_text: str, prompt_v: str):
   with open(prompt_v + ".lab", "r", encoding="utf-8") as file:
       prompt_v_text = file.read()
 
-  checkpoint_path = 'checkpoints/fish-speech-1.4'
+  checkpoint_path = Path('checkpoints/fish-speech-1.4')
   pt = [prompt_v_text]
   pto = [Path(prompt_v + '.npy')]
   generate(
@@ -55,7 +55,7 @@ def run_1(task_id: str, input_text: str, prompt_v: str):
      num_samples=1, 
      compile=True, 
      task_id=task_id, 
-     checkpoint_path=Path(checkpoint_path),
+     checkpoint_path=checkpoint_path,
      max_new_tokens=0,
      top_p=0.7,
      repetition_penalty=1.2,
@@ -77,7 +77,7 @@ def run_1(task_id: str, input_text: str, prompt_v: str):
   #     -o "jojo-01.wav" \
   #     --checkpoint-path "checkpoints/fish-speech-1.4/firefly-gan-vq-fsq-8x1024-21hz-generator.pth"
 
-  checkpoint_path='checkpoints/fish-speech-1.4/firefly-gan-vq-fsq-8x1024-21hz-generator.pth'
+  checkpoint_path=Path('checkpoints/fish-speech-1.4/firefly-gan-vq-fsq-8x1024-21hz-generator.pth')
   inference(
      input_path=task_id + '_0.npy', 
      output_path=result_path, 
