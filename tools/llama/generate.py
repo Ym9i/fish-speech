@@ -638,18 +638,19 @@ def main(
     text: str,
     prompt_text: Optional[list[str]],
     prompt_tokens: Optional[list[Path]],
-    num_samples: int,
-    max_new_tokens: int,
-    top_p: int,
-    repetition_penalty: float,
-    temperature: float,
-    checkpoint_path: Path,
-    device: str,
+    num_samples: Optional[int],
+    max_new_tokens: Optional[int],
+    top_p: Optional[int],
+    repetition_penalty: Optional[float],
+    temperature: Optional[float],
+    checkpoint_path: Optional[Path],
+    device: Optional[str],
     compile: bool,
-    seed: int,
-    half: bool,
-    iterative_prompt: bool,
-    chunk_length: int,
+    seed: Optional[int],
+    half: Optional[bool],
+    iterative_prompt: Optional[bool],
+    chunk_length: Optional[int],
+    task_id: Optional[str],
 ) -> None:
 
     precision = torch.half if half else torch.bfloat16
@@ -709,7 +710,7 @@ def main(
             logger.info(f"Sampled text: {response.text}")
         elif response.action == "next":
             if codes:
-                np.save(f"codes_{idx}.npy", torch.cat(codes, dim=1).cpu().numpy())
+                np.save(f"{task_id}_{idx}.npy", torch.cat(codes, dim=1).cpu().numpy())
                 logger.info(f"Saved codes to codes_{idx}.npy")
             logger.info(f"Next sample")
             codes = []

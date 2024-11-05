@@ -14,7 +14,12 @@ from omegaconf import OmegaConf
 from tools.file import AUDIO_EXTENSIONS
 
 # register eval resolver
-OmegaConf.register_new_resolver("eval", eval)
+# 防止多个位置注册出错
+try:
+    OmegaConf.register_new_resolver("eval", eval)
+except KeyError:
+    print("Resolver 'eval' is already registered.")
+
 
 
 def load_model(config_name, checkpoint_path, device="cuda"):

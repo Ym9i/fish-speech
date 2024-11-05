@@ -20,7 +20,12 @@ from omegaconf import OmegaConf
 from tools.file import AUDIO_EXTENSIONS, list_files, load_filelist
 
 # register eval resolver
-OmegaConf.register_new_resolver("eval", eval)
+# 防止多个位置注册出错
+try:
+    OmegaConf.register_new_resolver("eval", eval)
+except KeyError:
+    print("Resolver 'eval' is already registered.")
+
 # This file is used to convert the audio files to text files using the Whisper model.
 # It's mainly used to generate the training data for the VQ model.
 
