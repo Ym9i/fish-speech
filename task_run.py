@@ -46,7 +46,7 @@ def run_1(task_id: str, input_text: str, prompt_v: str):
       prompt_v_text = file.read()
 
   checkpoint_path = 'checkpoints/fish-speech-1.4'
-  generate(text=input_text, prompt_text=prompt_v_text, prompt_tokens=prompt_v + '.npy', num_samples=1, compile=True, task_id=task_id, checkpoint_path=checkpoint_path, compile=True)
+  generate(text=input_text, prompt_text=prompt_v_text, prompt_tokens=prompt_v + '.npy', num_samples=1, compile=True, task_id=task_id, checkpoint_path=checkpoint_path)
   # type: ignore
 
   # ------------------------------------------------------------
