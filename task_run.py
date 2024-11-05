@@ -1,4 +1,4 @@
-from tools.vqgan.extract_vq import main as extract_vq 
+# from tools.vqgan.extract_vq import main as extract_vq 
 from tools.vqgan.inference import main as inference
 from tools.llama.generate import main as generate
 
@@ -67,10 +67,10 @@ def run_1(task_id: str, input_text: str, prompt_v: str):
 def main_1():
    input_text = '最近，长白山景区准备了接驳车！就是上汽大通V80！有了它，游客上山更方便。前几天，长白山景区和上汽大通合作，准备了好多V80作为接驳车！游客上山再也不用排队了。'
    task_list = [
-      ['jojo-01', 'data/jojo/001'],
-      # ['jojo-02', 'data/jojo/002'],
-      # ['yangge-01', 'data/yangge/003'],
-      # ['yangge-02', 'data/yangge/004'],
+      ['1105-jojo-01', 'data/jojo/001'],
+      # ['1105-jojo-02', 'data/jojo/002'],
+      # ['1105-yangge-01', 'data/yangge/003'],
+      # ['1105-yangge-02', 'data/yangge/004'],
    ]
 
    for task in task_list:
