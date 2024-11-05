@@ -96,7 +96,7 @@ def main(input_path, output_path, config_name, checkpoint_path, device):
         logger.info(f"Generated indices of shape {indices.shape}")
 
         # Save indices
-        np.save(output_path.with_suffix(".npy"), indices.cpu().numpy())
+        np.save(output_path.with_suffix(".npy"), indices.cpu().detach().numpy())
     elif input_path.suffix == ".npy":
         logger.info(f"Processing precomputed indices from {input_path}")
         indices = np.load(input_path)
@@ -117,7 +117,7 @@ def main(input_path, output_path, config_name, checkpoint_path, device):
     )
 
     # Save audio
-    fake_audio = fake_audios[0, 0].float().cpu().numpy()
+    fake_audio = fake_audios[0, 0].float().cpu().detach().numpy()
     sf.write(output_path, fake_audio, model.spec_transform.sample_rate)
     logger.info(f"Saved audio to {output_path}")
 
