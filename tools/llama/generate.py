@@ -640,7 +640,7 @@ def main(
     prompt_tokens: Optional[list[Path]],
     num_samples: Optional[int],
     max_new_tokens: Optional[int],
-    top_p: Optional[int],
+    top_p: Optional[float],
     repetition_penalty: Optional[float],
     temperature: Optional[float],
     checkpoint_path: Optional[Path],

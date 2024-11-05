@@ -49,27 +49,27 @@ def load_model(config_name, checkpoint_path, device="cuda"):
     return model
 
 
-@torch.no_grad()
-@click.command()
-@click.option(
-    "--input-path",
-    "-i",
-    default="test.wav",
-    type=click.Path(exists=True, path_type=Path),
-)
-@click.option(
-    "--output-path", "-o", default="fake.wav", type=click.Path(path_type=Path)
-)
-@click.option("--config-name", default="firefly_gan_vq")
-@click.option(
-    "--checkpoint-path",
-    default="checkpoints/fish-speech-1.4/firefly-gan-vq-fsq-8x1024-21hz-generator.pth",
-)
-@click.option(
-    "--device",
-    "-d",
-    default="cuda",
-)
+# @torch.no_grad()
+# @click.command()
+# @click.option(
+#     "--input-path",
+#     "-i",
+#     default="test.wav",
+#     type=click.Path(exists=True, path_type=Path),
+# )
+# @click.option(
+#     "--output-path", "-o", default="fake.wav", type=click.Path(path_type=Path)
+# )
+# @click.option("--config-name", default="firefly_gan_vq")
+# @click.option(
+#     "--checkpoint-path",
+#     default="checkpoints/fish-speech-1.4/firefly-gan-vq-fsq-8x1024-21hz-generator.pth",
+# )
+# @click.option(
+#     "--device",
+#     "-d",
+#     default="cuda",
+# )
 def main(input_path, output_path, config_name, checkpoint_path, device):
     model = load_model(config_name, checkpoint_path, device=device)
 

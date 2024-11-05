@@ -1,7 +1,7 @@
 # from tools.vqgan.extract_vq import main as extract_vq 
 from tools.vqgan.inference import main as inference
 from tools.llama.generate import main as generate
-
+from pathlib import Path
 
 
 def get_task_list():
@@ -47,8 +47,27 @@ def run_1(task_id: str, input_text: str, prompt_v: str):
 
   checkpoint_path = 'checkpoints/fish-speech-1.4'
   pt = [prompt_v_text]
-  pto = [prompt_v + '.npy']
-  generate(text=input_text, prompt_text=pt, prompt_tokens=pto, num_samples=1, compile=True, task_id=task_id, checkpoint_path=checkpoint_path)
+  pto = [Path(prompt_v + '.npy')]
+  generate(
+     text=input_text, 
+     prompt_text=pt, 
+     prompt_tokens=pto, 
+     num_samples=1, 
+     compile=True, 
+     task_id=task_id, 
+     checkpoint_path=Path(checkpoint_path),
+     max_new_tokens=0,
+     top_p=0.7,
+     repetition_penalty=1.2,
+     temperature=0.7,
+     device="cuda",
+     seed=42,
+     half=False,
+     iterative_prompt=True,
+     chunk_length=100
+     )
+  
+  
   # type: ignore
 
   # ------------------------------------------------------------
@@ -59,7 +78,13 @@ def run_1(task_id: str, input_text: str, prompt_v: str):
   #     --checkpoint-path "checkpoints/fish-speech-1.4/firefly-gan-vq-fsq-8x1024-21hz-generator.pth"
 
 
-  inference(input_path=task_id + '_0.npy', output_path=result_path, checkpoint_path=checkpoint_path)
+  inference(
+     input_path=task_id + '_0.npy', 
+     output_path=result_path, 
+     checkpoint_path=checkpoint_path,
+     config_name='firefly_gan_vq',
+     device='cuda'
+     )
   # type: ignore
 
   # ------------------------------------------------------------
