@@ -79,12 +79,12 @@ def run_1(task_id: str, input_text: str, prompt_v: str):
 
   checkpoint_path=Path('checkpoints/fish-speech-1.4/firefly-gan-vq-fsq-8x1024-21hz-generator.pth')
   inference(
-     input_path=task_id + '_0.npy', 
-     output_path=result_path, 
+     input_path=Path(task_id + '_0.npy'), 
+     output_path=Path(result_path), 
      checkpoint_path=checkpoint_path,
      config_name='firefly_gan_vq',
      device='cuda'
-     )
+  )
   # type: ignore
 
   # ------------------------------------------------------------
