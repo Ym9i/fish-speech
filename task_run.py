@@ -77,7 +77,7 @@ def run_1(task_id: str, input_text: str, prompt_v: str):
   #     -o "jojo-01.wav" \
   #     --checkpoint-path "checkpoints/fish-speech-1.4/firefly-gan-vq-fsq-8x1024-21hz-generator.pth"
 
-
+  checkpoint_path='checkpoints/fish-speech-1.4/firefly-gan-vq-fsq-8x1024-21hz-generator.pth'
   inference(
      input_path=task_id + '_0.npy', 
      output_path=result_path, 
